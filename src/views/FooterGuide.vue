@@ -1,6 +1,6 @@
 <template>
   <van-tabbar v-model="active">
-    <van-tabbar-item>
+    <van-tabbar-item @click="goTo('warehouse')">
       <span>曲库</span>
       <img
         slot="icon"
@@ -8,11 +8,11 @@
         :src="props.active ? warehouse.active : warehouse.inactive"
       />
     </van-tabbar-item>
-    <van-tabbar-item>
+    <van-tabbar-item @click="goTo('player')">
       <span>正在播放</span>
       <img slot="icon" slot-scope="props" :src="props.active ? player.active : player.inactive" />
     </van-tabbar-item>
-    <van-tabbar-item>
+    <van-tabbar-item @click="goTo('mine')">
       <span>我的</span>
       <img slot="icon" slot-scope="props" :src="props.active ? mine.active : mine.inactive" />
     </van-tabbar-item>
@@ -43,6 +43,11 @@ export default {
         inactive: "/img/footer_guide/mine_inactive.png"
       }
     };
+  },
+  methods: {
+    goTo(target) {
+      this.$router.push(target);
+    }
   }
 };
 </script>
