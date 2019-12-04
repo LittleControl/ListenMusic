@@ -26,14 +26,41 @@
         <span>分类</span>
       </van-grid-item>
     </van-grid>
-    <div class="content">
+    <div class="items first_item">
       <div class="avatar">
-        <img src="/img/warehouse/sort.png" size="32*32" />
+        <img src="/img/warehouse/singer1.jpg" width="32" height="32" />
       </div>
-      <span>Nothing</span>
+      <div class="content">
+        <h3>突然的自我</h3>
+        <div class="row">Nothing</div>
+        <div class="row">Nothing</div>
+      </div>
     </div>
-    <van-skeleton title avatar :row="3" />
-    <van-skeleton title avatar :row="3" />
+    <div class="items">
+      <div class="avatar">
+        <img src="/img/warehouse/singer2.jpg" width="32" height="32" />
+      </div>
+      <div class="content">
+        <h3>The Truth That You Leave</h3>
+        <div class="row">Nothing</div>
+        <div class="row">Nothing</div>
+      </div>
+    </div>
+    <div class="items">
+      <div class="avatar">
+        <img src="/img/warehouse/singer3.jpg" width="32" height="32" />
+      </div>
+      <div class="content">
+        <h3>老街</h3>
+        <div class="row">Nothing</div>
+        <div class="row">Nothing</div>
+      </div>
+    </div>
+    <div class="player">
+      <div class="status">正在播放</div>
+      <div class="name">Never Say GoodBye</div>
+      <div class="control">Control</div>
+    </div>
   </div>
 </template>
 
@@ -65,12 +92,47 @@ export default {
 };
 </script>
 
-<style>
-.content {
+<style lang="scss">
+.items {
+  margin-bottom: 15px;
+  display: flex;
   padding: 0 16px;
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    flex-shrink: 0;
+    margin-right: 16px;
+  }
+  .content {
+    padding-top: 8px;
+    width: 100%;
+    h3 {
+      margin: -5px 0 0 0;
+      width: 90%;
+      height: 16px;
+    }
+    .row {
+      width: 100%;
+      margin-top: 20px;
+      height: 16px;
+    }
+  }
 }
-.avatar {
-  width: 32px;
-  height: 32px;
+.first_item {
+  margin-top: 16px;
+}
+.player {
+  background-color: #bfa;
+  position: absolute;
+  bottom: 51px;
+  width: 100%;
+  height: 35px;
+  line-height: 2em;
+  display: flex;
+  justify-content: space-around;
+  div {
+    display: inline-block;
+  }
 }
 </style>
