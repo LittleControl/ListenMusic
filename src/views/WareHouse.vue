@@ -5,7 +5,7 @@
     </form>
     <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img v-lazy="image" width="375" height="200" />
+        <img v-lazy="image" width="100%" />
       </van-swipe-item>
     </van-swipe>
     <van-grid :border="false" :column-num="4" :clickable="true">
@@ -26,7 +26,7 @@
         <span>分类</span>
       </van-grid-item>
     </van-grid>
-    <div class="items first_item">
+    <div class="items">
       <div class="avatar">
         <img src="/img/warehouse/singer1.jpg" width="32" height="32" />
       </div>
@@ -126,7 +126,7 @@ export default {
 
 <style lang="scss">
 .items {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   display: flex;
   padding: 0 16px;
   .avatar {
@@ -146,7 +146,7 @@ export default {
     }
     .row {
       width: 100%;
-      margin-top: 20px;
+      margin-top: 17px;
       height: 16px;
     }
   }
