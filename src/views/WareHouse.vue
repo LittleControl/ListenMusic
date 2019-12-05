@@ -31,9 +31,9 @@
         <img src="/img/warehouse/singer1.jpg" width="32" height="32" />
       </div>
       <div class="content">
-        <h3>突然的自我</h3>
-        <div class="row">Nothing</div>
-        <div class="row">Nothing</div>
+        <h3 @click="playSongs('Nigel Silin - Sakura Tears.mp3')">突然的自我</h3>
+        <div class="row">Author</div>
+        <div class="row">Comments</div>
       </div>
     </div>
     <div class="items">
@@ -58,8 +58,10 @@
     </div>
     <div class="player">
       <div class="status">正在播放</div>
-      <div class="name">Never Say GoodBye</div>
-      <div class="control">Control</div>
+      <div class="name">{{currentSong}}</div>
+      <div class="control" @click="playSongs('Nigel Silin - Sakura Tears.mp3')">
+        <img :src="this.songSrc" width="32" height="32" />
+      </div>
     </div>
   </div>
 </template>
@@ -82,12 +84,42 @@ Vue.use(Swipe).use(SwipeItem);
 export default {
   data() {
     return {
-      images: ["/img/app/2.jpg", "/img/app/3.jpg"]
+      images: ["/img/app/2.jpg", "/img/app/3.jpg"],
+      song: null,
+      songSrc: "/img/warehouse/play.png"
     };
   },
   methods: {
     onSearch() {},
-    onCancel() {}
+    onCancel() {},
+    playSongs(name, playSongs) {
+      if (this.song == null || this.song.name != name) {
+        let currentSong = new Audio("/music/" + name);
+        this.song = {
+          currentSong,
+          name,
+          isPlaying: false
+        };
+      }
+      if (this.song.isPlaying) {
+        this.song.currentSong.pause();
+        this.song.isPlaying = false;
+        this.songSrc = "/img/warehouse/play.png";
+      } else {
+        this.song.currentSong.play();
+        this.song.isPlaying = true;
+        this.songSrc = "/img/warehouse/pause.png";
+      }
+    }
+  },
+  computed: {
+    currentSong() {
+      if (this.song == null) {
+        return "Listen To Music";
+      } else {
+        return this.song.name.slice(0, -4);
+      }
+    }
   }
 };
 </script>
@@ -123,7 +155,7 @@ export default {
   margin-top: 16px;
 }
 .player {
-  background-color: #bfa;
+  background-color: rgba(187, 255, 170, 0.5);
   position: absolute;
   bottom: 51px;
   width: 100%;
