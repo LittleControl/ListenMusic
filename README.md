@@ -1,5 +1,7 @@
 # listen-music
 
+A WebApp to listen to music, based on Vue.js
+
 ## Project setup
 
 ```shell
