@@ -56,13 +56,6 @@
         <div class="row">Nothing</div>
       </div>
     </div>
-    <div class="player">
-      <div class="status">正在播放</div>
-      <div class="name">{{currentSong}}</div>
-      <div class="control" @click="playSongs('Nigel Silin - Sakura Tears.mp3')">
-        <img :src="this.songSrc" width="32" height="32" />
-      </div>
-    </div>
   </div>
 </template>
 

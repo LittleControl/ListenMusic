@@ -48,6 +48,14 @@ export default {
     goTo(target) {
       this.$router.push(target);
     }
+  },
+  mounted() {
+    // let hashText = window.location.hash.slice(1);
+  },
+  computed: {
+    hashText() {
+      return window.location.hash;
+    }
   }
 };
 </script>

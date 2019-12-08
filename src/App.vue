@@ -1,15 +1,18 @@
 <template>
   <div>
     <router-view></router-view>
+    <PlayerMini />
     <FooterGuide />
   </div>
 </template>
 
 <script>
-import FooterGuide from "./views/FooterGuide";
+import FooterGuide from "./components/FooterGuide";
+import PlayerMini from "./components/PlayerMini";
 export default {
   components: {
-    FooterGuide
+    FooterGuide,
+    PlayerMini
   }
 };
 </script>
