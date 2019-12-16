@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import App from '../App.vue'
 import WareHouse from '../views/WareHouse.vue'
 import Mine from '../views/Mine.vue'
+import Player from '../views/Player.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,10 @@ const routes = [
     path: '/mine',
     component: Mine
 
+  },
+  {
+    path: "/player",
+    component: Player
   }
 ]
 
