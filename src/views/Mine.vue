@@ -2,7 +2,8 @@
   <div id="all_border">
     <div class="my_logo"></div>
     <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
-      <van-count-down millisecond format="HH:mm:ss:SS" />
+      已累计呆在这里
+      <van-count-down millisecond format="HH:mm:ss:SS" />时间啦
     </van-divider>
     <div class="circles">
       <van-circle v-model="currentRate" :color="gradientColor" text="渐变色" />
