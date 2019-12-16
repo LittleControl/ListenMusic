@@ -45,7 +45,7 @@ export default {
 <style lang="scss">
 .main_body {
   width: 100%;
-  height: 800px;
+  height: 100%;
   background-color: azure;
   overflow: hidden;
   .logo {
