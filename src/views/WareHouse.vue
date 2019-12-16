@@ -160,4 +160,7 @@ export default {
     display: inline-block;
   }
 }
+.van-grid {
+  height: 10%;
+}
 </style>
