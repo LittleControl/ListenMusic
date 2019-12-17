@@ -1,7 +1,7 @@
 <template>
   <div class="main_body">
     <div class="logo">
-      <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 5px' }">正在播放</van-divider>
+      <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 5px' }">模特-李荣浩</van-divider>
       <div class="img_cir Rotation">
         <img src="/img/player/lironghao.jpg" />
       </div>
@@ -50,7 +50,6 @@ export default {
   overflow: hidden;
   .logo {
     width: 100%;
-    // height: 40%;
     .img_cir {
       height: 300px;
       width: 300px;

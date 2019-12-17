@@ -151,7 +151,6 @@ export default {
 }
 .recommend {
   width: 100%;
-  // overflow: auto;
   .item {
     width: 100%;
     display: flex;

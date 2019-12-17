@@ -23,7 +23,8 @@ export default {};
   display: flex;
   justify-content: space-around;
   div {
-    display: inline-block;
+    flex-basis: 33%;
+    text-align: center;
   }
 }
 </style>
