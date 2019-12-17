@@ -87,6 +87,7 @@ export default {
       line-height: 2em;
     }
   }
+  // display: none;
 }
 @keyframes rotation {
   from {
