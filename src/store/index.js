@@ -27,6 +27,14 @@ export default new Vuex.Store({
         this.song.isPlaying = true;
         this.songSrc = "/img/warehouse/pause.png";
       }
+    },
+    displayMiniPlayer(value) {
+      let player = document.getElementsByClassName("player")[0];
+      if (value) {
+        player.style.display = "box";
+      } else {
+        player.style.display = "none";
+      }
     }
   },
   modules: {

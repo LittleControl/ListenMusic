@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="warehouse">
     <form action="/">
       <van-search placeholder="请输入搜索关键词" show-action @search="onSearch" @cancel="onCancel" />
     </form>
@@ -8,52 +8,62 @@
         <img v-lazy="image" width="100%" />
       </van-swipe-item>
     </van-swipe>
-    <van-grid :border="false" :column-num="4" :clickable="true">
-      <van-grid-item>
-        <van-image src="/img/warehouse/singer.png" />
-        <span>歌手</span>
-      </van-grid-item>
-      <van-grid-item>
-        <van-image src="/img/warehouse/board.png" />
-        <span>排行榜</span>
-      </van-grid-item>
-      <van-grid-item>
-        <van-image src="/img/warehouse/recommend.png" />
-        <span>为你推荐</span>
-      </van-grid-item>
-      <van-grid-item>
-        <van-image src="/img/warehouse/sort.png" />
-        <span>分类</span>
-      </van-grid-item>
-    </van-grid>
-    <div class="items">
-      <div class="avatar">
-        <img src="/img/warehouse/singer1.jpg" width="32" height="32" />
+    <div class="icons">
+      <div class="single_icon">
+        <div class="icon_img">
+          <img src="/img/warehouse/singer.png" />
+        </div>
+        <div class="icon_text">歌手</div>
       </div>
-      <div class="content">
-        <h3 @click="playSongs('Nigel Silin - Sakura Tears.mp3')">突然的自我</h3>
-        <div class="row">Author</div>
-        <div class="row">Comments</div>
+      <div class="single_icon">
+        <div class="icon_img">
+          <img src="/img/warehouse/board.png" />
+        </div>
+        <div class="icon_text">排行榜</div>
+      </div>
+      <div class="single_icon">
+        <div class="icon_img">
+          <img src="/img/warehouse/recommend.png" />
+        </div>
+        <div class="icon_text">为你推荐</div>
+      </div>
+      <div class="single_icon">
+        <div class="icon_img">
+          <img src="/img/warehouse/sort.png" />
+        </div>
+        <div class="icon_text">分类</div>
       </div>
     </div>
-    <div class="items">
-      <div class="avatar">
-        <img src="/img/warehouse/singer2.jpg" width="32" height="32" />
+    <div class="recommend">
+      <div class="item">
+        <div class="avatar">
+          <img src="/img/warehouse/singer1.jpg" />
+        </div>
+        <div class="content">
+          <h3 @click="playSongs('Nigel Silin - Sakura Tears.mp3')">突然的自我</h3>
+          <div class="row">Author</div>
+          <div class="row">Comments</div>
+        </div>
       </div>
-      <div class="content">
-        <h3>The Truth That You Leave</h3>
-        <div class="row">Nothing</div>
-        <div class="row">Nothing</div>
+      <div class="item">
+        <div class="avatar">
+          <img src="/img/warehouse/singer2.jpg" />
+        </div>
+        <div class="content">
+          <h3>The Truth That You Leave</h3>
+          <div class="row">Nothing</div>
+          <div class="row">Nothing</div>
+        </div>
       </div>
-    </div>
-    <div class="items">
-      <div class="avatar">
-        <img src="/img/warehouse/singer3.jpg" width="32" height="32" />
-      </div>
-      <div class="content">
-        <h3>老街</h3>
-        <div class="row">Nothing</div>
-        <div class="row">Nothing</div>
+      <div class="item">
+        <div class="avatar">
+          <img src="/img/warehouse/singer3.jpg" />
+        </div>
+        <div class="content">
+          <h3>老街</h3>
+          <div class="row">Nothing</div>
+          <div class="row">Nothing</div>
+        </div>
       </div>
     </div>
   </div>
@@ -118,49 +128,64 @@ export default {
 </script>
 
 <style lang="scss">
-.items {
-  margin-bottom: 10px;
-  display: flex;
-  padding: 0 16px;
-  .avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 100%;
-    flex-shrink: 0;
-    margin-right: 16px;
-  }
-  .content {
-    padding-top: 8px;
-    width: 100%;
-    h3 {
-      margin: -5px 0 0 0;
-      width: 90%;
-      height: 16px;
-    }
-    .row {
-      width: 100%;
-      margin-top: 17px;
-      height: 16px;
-    }
-  }
-}
-.first_item {
-  margin-top: 16px;
-}
-.player {
-  background-color: rgba(187, 255, 170, 0.5);
-  position: absolute;
-  bottom: 51px;
+.warehouse {
   width: 100%;
-  height: 35px;
-  line-height: 2em;
+  height: 100%;
+  overflow: hidden;
+}
+.icons {
+  width: 100%;
   display: flex;
   justify-content: space-around;
-  div {
-    display: inline-block;
+  .single_icon {
+    width: 25%;
+    text-align: center;
+    .icon_img {
+      width: 100%;
+      img {
+        width: 50%;
+      }
+    }
+  }
+  padding: 20px 0 20px 0;
+}
+.recommend {
+  width: 100%;
+  overflow: auto;
+  .item {
+    width: 100%;
+    display: flex;
+    margin-bottom: 15px;
+    padding: 0 16px;
+    &:first-of-type {
+      margin-top: 10px;
+    }
+    .avatar {
+      border-radius: 100%;
+      flex-shrink: 0;
+      margin-right: 16px;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    .content {
+      padding-top: 8px;
+      width: 100%;
+      h3 {
+        margin: -5px 0 0 0;
+        width: 90%;
+        height: 16px;
+      }
+      .row {
+        width: 100%;
+        margin-top: 17px;
+        height: 16px;
+      }
+    }
   }
 }
-.van-grid {
-  height: 10%;
+.player {
+  display: box;
 }
 </style>

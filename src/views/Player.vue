@@ -102,9 +102,4 @@ export default {
   transform: rotate(360deg);
   animation: rotation 10s linear infinite;
 }
-
-.player {
-  // 隐藏底部的控制播放的东西
-  display: none;
-}
 </style>

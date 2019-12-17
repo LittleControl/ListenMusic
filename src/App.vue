@@ -13,6 +13,20 @@ export default {
   components: {
     FooterGuide,
     PlayerMini
+  },
+  watch: {
+    $route: {
+      handler: function() {
+        let path = this.$route.path.slice(1);
+        let player = document.getElementsByClassName("player")[0];
+        if (path == "player") {
+          player.style.display = "none";
+        } else {
+          player.style.display = "box";
+        }
+      },
+      deep: true
+    }
   }
 };
 </script>
