@@ -151,7 +151,7 @@ export default {
 }
 .recommend {
   width: 100%;
-  overflow: auto;
+  // overflow: auto;
   .item {
     width: 100%;
     display: flex;
@@ -184,8 +184,5 @@ export default {
       }
     }
   }
-}
-.player {
-  display: box;
 }
 </style>
