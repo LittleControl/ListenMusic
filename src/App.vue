@@ -16,13 +16,13 @@ export default {
   },
   watch: {
     $route: {
-      handler: function() {
-        let path = this.$route.path.slice(1);
+      handler: function(to, from) {
+        let path = to.path.slice(1);
         let player = document.getElementsByClassName("player")[0];
         if (path == "player") {
           player.style.display = "none";
         } else {
-          player.style.display = "box";
+          player.style.display = "flex";
         }
       },
       deep: true
