@@ -16,7 +16,8 @@ VueRouter.prototype.push = function push(location) {
 const routes = [
   {
     path: '/',
-    component: App
+    // component: App,
+    redirect: '/warehouse'
   },
   {
     path: '/warehouse',
