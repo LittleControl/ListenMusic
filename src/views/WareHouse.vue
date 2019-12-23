@@ -40,7 +40,7 @@
           <img src="/img/warehouse/singer1.jpg" />
         </div>
         <div class="content">
-          <h3 @click="playSongs('Nigel Silin - Sakura Tears.mp3')">突然的自我</h3>
+          <h3 @click="playSong('Nigel Silin - Sakura Tears.mp3')">突然的自我</h3>
           <div class="row">Author</div>
           <div class="row">Comments</div>
         </div>
@@ -50,7 +50,7 @@
           <img src="/img/warehouse/singer2.jpg" />
         </div>
         <div class="content">
-          <h3>The Truth That You Leave</h3>
+          <h3 @click="playSong('突然的自我.mp3')">The Truth That You Leave</h3>
           <div class="row">Nothing</div>
           <div class="row">Nothing</div>
         </div>
@@ -84,45 +84,25 @@ Vue.use(Grid).use(GridItem);
 Vue.use(Search);
 Vue.use(Lazyload);
 Vue.use(Swipe).use(SwipeItem);
+
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      images: ["/img/app/2.jpg", "/img/app/3.jpg"],
-      song: null,
-      songSrc: "/img/warehouse/play.png"
+      images: ["/img/app/2.jpg", "/img/app/3.jpg"]
     };
   },
   methods: {
     onSearch() {},
     onCancel() {},
-    playSongs(name, playSongs) {
-      if (this.song == null || this.song.name != name) {
-        let currentSong = new Audio("/music/" + name);
-        this.song = {
-          currentSong,
-          name,
-          isPlaying: false
-        };
-      }
-      if (this.song.isPlaying) {
-        this.song.currentSong.pause();
-        this.song.isPlaying = false;
-        this.songSrc = "/img/warehouse/play.png";
-      } else {
-        this.song.currentSong.play();
-        this.song.isPlaying = true;
-        this.songSrc = "/img/warehouse/pause.png";
-      }
+    playSong(name) {
+      this.$store.dispatch("playSong", {
+        name
+      });
     }
   },
   computed: {
-    currentSong() {
-      if (this.song == null) {
-        return "Listen To Music";
-      } else {
-        return this.song.name.slice(0, -4);
-      }
-    }
+    ...mapGetters(["playImg"])
   }
 };
 </script>

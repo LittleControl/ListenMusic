@@ -1,15 +1,28 @@
 <template>
   <div class="player">
     <div class="status">正在播放</div>
-    <div class="name">{{'currentSong'}}</div>
-    <div class="control" @click="playSongs('Nigel Silin - Sakura Tears.mp3')">
-      <img src="/img/warehouse/pause.png" width="32" height="32" />
+    <div class="name">{{currentSong}}</div>
+    <div class="control" @click="controlPlay">
+      <img :src="playImg" width="32" height="32" />
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapGetters, mapActions } from "vuex";
+export default {
+  methods: {
+    ...mapActions(["controlPlay"])
+  },
+  computed: {
+    ...mapGetters(["playImg"]),
+    currentSong() {
+      return this.$store.state.currentSong == null
+        ? "Listen Music Relaxedly "
+        : this.$store.state.currentSong.name;
+    }
+  }
+};
 </script>
 
 <style lang="scss">
