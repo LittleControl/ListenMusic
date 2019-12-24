@@ -35,34 +35,14 @@
       </div>
     </div>
     <div class="recommend">
-      <div class="item">
+      <div class="item" v-for="(item, index) in songs" :key="index">
         <div class="avatar">
-          <img src="/img/warehouse/singer1.jpg" />
+          <img :src="item.singerImg" />
         </div>
         <div class="content">
-          <h3 @click="playSong('Nigel Silin - Sakura Tears.mp3')">突然的自我</h3>
-          <div class="row">Author</div>
-          <div class="row">Comments</div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="avatar">
-          <img src="/img/warehouse/singer2.jpg" />
-        </div>
-        <div class="content">
-          <h3 @click="playSong('突然的自我.mp3')">The Truth That You Leave</h3>
-          <div class="row">Nothing</div>
-          <div class="row">Nothing</div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="avatar">
-          <img src="/img/warehouse/singer3.jpg" />
-        </div>
-        <div class="content">
-          <h3>老街</h3>
-          <div class="row">Nothing</div>
-          <div class="row">Nothing</div>
+          <h3 @click="playSong(item)">{{item.name}}</h3>
+          <div class="row">{{item.singer}}</div>
+          <div class="row">{{item.comments}}</div>
         </div>
       </div>
     </div>
@@ -95,14 +75,12 @@ export default {
   methods: {
     onSearch() {},
     onCancel() {},
-    playSong(name) {
-      this.$store.dispatch("playSong", {
-        name
-      });
+    playSong(song) {
+      this.$store.dispatch("playSong", song);
     }
   },
   computed: {
-    ...mapGetters(["playImg"])
+    ...mapGetters(["playImg", "songs"])
   }
 };
 </script>
