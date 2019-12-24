@@ -7,17 +7,7 @@
       </div>
     </div>
     <div class="lyric">
-      <div class="item">第一行歌词</div>
-      <div class="item">第二行歌词</div>
-      <div class="item">第三行歌词</div>
-      <div class="item">第四行歌词</div>
-      <div class="item">第五行歌词</div>
-      <div class="item">第六行歌词</div>
-      <div class="item">第七行歌词</div>
-      <div class="item">第八行歌词</div>
-      <div class="item">第九行歌词</div>
-      <div class="item">第十行歌词</div>
-      <div class="item">第十一行歌词</div>
+      <div class="item" v-for="(item, index) in lyrics" :key="index">{{item.content}}</div>
     </div>
     <div class="progress-bar">
       <van-slider v-model="progress" bar-height="4px" active-color="#ee0a24" />
@@ -38,6 +28,11 @@ export default {
     return {
       progress: 15
     };
+  },
+  computed: {
+    lyrics() {
+      return [];
+    }
   }
 };
 </script>
