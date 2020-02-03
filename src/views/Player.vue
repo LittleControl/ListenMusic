@@ -1,17 +1,21 @@
 <template>
   <div class="main_body">
     <div class="logo">
-      <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 5px' }">模特-李荣浩</van-divider>
+      <van-divider
+        :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 5px' }"
+      >{{song.name+'-'+song.singer}}</van-divider>
       <div class="img_cir Rotation">
-        <img src="/img/player/lironghao.jpg" />
+        <img :src="song.singerImg" />
       </div>
     </div>
     <div class="lyric">
-      <div class="item" v-for="(item, index) in lyrics" :key="index">{{item.content}}</div>
+      <ul>
+        <li v-for="(item, index) in song.lyrics" :key="index">{{item.content}}</li>
+      </ul>
     </div>
     <div class="progress-bar">
       <van-slider v-model="progress" bar-height="4px" active-color="#ee0a24" />
-      <div class="progress-num">3:20/4:50</div>
+      <div class="progress-num">{{current_length+'/'+song.length}}</div>
     </div>
   </div>
 </template>
@@ -23,6 +27,7 @@ import { Slider } from "vant";
 
 Vue.use(Slider);
 Vue.use(Divider);
+
 export default {
   data() {
     return {
@@ -30,8 +35,22 @@ export default {
     };
   },
   computed: {
-    lyrics() {
-      return [];
+    song() {
+      if (this.$store.state.currentSong != null) {
+        return this.$store.state.currentSong;
+      } else {
+        return {
+          singer: "ListenMusic",
+          name: "",
+          lyrics: [
+            {
+              content: "Find your real Life"
+            }
+          ],
+          singerImg: "/img/player/lironghao.jpg",
+          length: "00:00"
+        };
+      }
     }
   }
 };
@@ -57,17 +76,11 @@ export default {
   }
   .lyric {
     width: 100%;
-    height: 50%;
+    height: 45%;
     overflow: auto;
     background-color: #bfa;
-    .item {
-      width: 98%;
-      padding-left: 2%;
-      overflow: auto;
-      height: 4em;
-      &:first-of-type {
-        margin-top: 10px;
-      }
+    ul {
+      text-align: center;
     }
   }
   .progress-bar {

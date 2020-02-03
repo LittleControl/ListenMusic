@@ -12,5 +12,5 @@ export default {
             return [arr[one], arr[two], arr[three]]
         }
         return getSongs(warehouse.getSongs)
-    }
+    },
 }

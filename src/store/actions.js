@@ -5,7 +5,13 @@ export default {
             commit('INIT_SONG', {
                 playingSong,
                 name: song.name,
-                isPlaying: false
+                isPlaying: false,
+                singer: song.singer,
+                comments: song.comments,
+                singerImg: song.singerImg,
+                songSrc: song.songSrc,
+                lyrics: song.lyrics,
+                time_length: song.time_length,
             })
         }
         if (state.currentSong.isPlaying) {

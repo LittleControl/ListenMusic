@@ -8,7 +8,8 @@ Vue.use(Vuex)
 
 const state = {
   currentSong: null,
-  miniPlayImg: '/img/warehouse/play.png'
+  miniPlayImg: '/img/warehouse/play.png',
+  playedTime: 0
 }
 export default new Vuex.Store({
   state,
