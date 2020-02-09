@@ -2,6 +2,17 @@ export default {
     playSong({ commit, state }, song) {
         if (state.currentSong == null || state.currentSong.name != song.name) {
             let playingSong = new Audio(song.songSrc)
+            function s2m(len) {
+                let m = parseInt(len / 60);
+                let s = len % 60;
+                if (s < 10) {
+                    s = "0" + s;
+                }
+                if (m == 0) {
+                    m = "00";
+                }
+                return m + ":" + s;
+            }
             commit('INIT_SONG', {
                 playingSong,
                 name: song.name,
@@ -11,7 +22,8 @@ export default {
                 singerImg: song.singerImg,
                 songSrc: song.songSrc,
                 lyrics: song.lyrics,
-                time_length: song.time_length,
+                length: song.time_length,
+                time_length: s2m(song.time_length),
             })
         }
         if (state.currentSong.isPlaying) {

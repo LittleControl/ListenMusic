@@ -9,7 +9,8 @@ Vue.use(Vuex)
 const state = {
   currentSong: null,
   miniPlayImg: '/img/warehouse/play.png',
-  playedTime: 0
+  playedTime: 0,
+  timer: null,
 }
 export default new Vuex.Store({
   state,

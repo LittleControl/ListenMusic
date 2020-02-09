@@ -15,7 +15,7 @@
     </div>
     <div class="progress-bar">
       <van-slider v-model="progress" bar-height="4px" active-color="#ee0a24" />
-      <div class="progress-num">{{current_length+'/'+song.length}}</div>
+      <div class="progress-num">{{current_length+'/'+song.time_length}}</div>
     </div>
   </div>
 </template>
@@ -29,11 +29,6 @@ Vue.use(Slider);
 Vue.use(Divider);
 
 export default {
-  data() {
-    return {
-      progress: 15
-    };
-  },
   computed: {
     song() {
       if (this.$store.state.currentSong != null) {
@@ -48,8 +43,32 @@ export default {
             }
           ],
           singerImg: "/img/player/lironghao.jpg",
-          length: "00:00"
+          length: "00"
         };
+      }
+    },
+    current_length() {
+      let origin = this.$store.state.playedTime;
+      function s2m(len) {
+        let m = parseInt(len / 60);
+        let s = len % 60;
+        if (s < 10) {
+          s = "0" + s;
+        }
+        if (m == 0) {
+          m = "00";
+        }
+        return m + ":" + s;
+      }
+      return s2m(origin);
+    },
+    progress() {
+      let current = this.$store.state.playedTime;
+      let all = this.$store.state.currentSong.length;
+      if (current >= all) {
+        return 100;
+      } else {
+        return (current / all) * 100;
       }
     }
   }
@@ -94,7 +113,7 @@ export default {
       line-height: 2em;
     }
   }
-  // display: none;
+  // display: none
 }
 @keyframes rotation {
   from {

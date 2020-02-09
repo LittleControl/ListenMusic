@@ -54,7 +54,7 @@ const getSongs = [
             { 'time': '02: 53.209', 'content': '取腰间明珠弹山雀' },
             { 'time': '02: 57.041', 'content': '立枇杷于庭前' },
         ],
-        time_length: ''
+        time_length: 198
     },
     {
         name: 'Sakura Tears',
@@ -111,7 +111,7 @@ const getSongs = [
             { 'time': '02: 53.209', 'content': '取腰间明珠弹山雀' },
             { 'time': '02: 57.041', 'content': '立枇杷于庭前' },
         ],
-        time_length: ''
+        time_length: 198
     },
     {
         name: '盗将行',
@@ -168,7 +168,7 @@ const getSongs = [
             { 'time': '02: 53.209', 'content': '取腰间明珠弹山雀' },
             { 'time': '02: 57.041', 'content': '立枇杷于庭前' },
         ],
-        time_length: '198'
+        time_length: 198
     }
 ]
 
