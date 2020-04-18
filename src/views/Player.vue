@@ -35,7 +35,8 @@ Vue.use(Divider);
 export default {
   computed: {
     song() {
-      if (this.$store.state.currentSong != null) {
+      if (this.$store.state.currentSong) {
+        console.log(this.$store.state.currentSong);
         return this.$store.state.currentSong;
       } else {
         return {
@@ -49,28 +50,24 @@ export default {
             }
           ],
           singerImg: "/img/player/lironghao.jpg",
-          length: 0
+          time_length: 0
         };
       }
     },
     current_length() {
       let current = this.$store.state.playedTime;
-      let sum = 0;
-      if (this.$store.state.currentSong) {
-        sum = this.$store.state.currentSong.length;
-      }
-      return current + "|" + sum;
+      let sum = this.$store.getters.time_length;
+      return current + "    || " + sum;
     },
-    progress() {
-      let current = this.$store.state.playedTime;
-      let all = 0;
-      if (this.$store.state.currentSong) {
-        all = this.$store.state.currentSong.length;
-      }
-      if (current >= all) {
-        return 100;
-      } else {
+    progress: {
+      get() {
+        let current = this.$store.state.playedTime;
+        let all = this.$store.getters.time_length;
         return (current / all) * 100;
+      },
+      set(newProgress) {
+        newProgress = (this.$store.getters.time_length * newProgress) / 100;
+        this.$store.dispatch("toCurentTime", newProgress);
       }
     },
     playedTime() {

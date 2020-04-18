@@ -11,7 +11,7 @@ export default {
                 singerImg: song.singerImg,
                 songSrc: song.songSrc,
                 lyrics: song.lyrics,
-                length: song.time_length,
+                time_length: song.time_length,
             })
         }
         if (state.currentSong.isPlaying) {
@@ -30,4 +30,10 @@ export default {
             commit('PLAY_SONG')
         }
     },
+    toCurentTime({ commit, state }, newProgress) {
+        if (state.currentSong == null) {
+            return
+        }
+        commit('TOCURENTTIME', newProgress)
+    }
 }

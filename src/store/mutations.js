@@ -20,4 +20,8 @@ export default {
         state.currentSong.isPlaying = true
         state.miniPlayImg = '/img/warehouse/pause.png'
     },
+    TOCURENTTIME(state, newProgress) {
+        state.currentSong.playingSong.currentTime = newProgress
+        state.playedTime = Math.round(newProgress)
+    }
 }
