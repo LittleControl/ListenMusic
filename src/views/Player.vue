@@ -39,26 +39,34 @@ export default {
         return this.$store.state.currentSong;
       } else {
         return {
-          singer: "ListenMusic",
-          name: "",
+          singer: "LittleControl",
+          name: "Listen Music",
           lyrics: [
             {
-              content: "Find your real Life"
+              time: 0,
+              content: "Find your real Life",
+              next: 0
             }
           ],
           singerImg: "/img/player/lironghao.jpg",
-          length: "00"
+          length: 0
         };
       }
     },
     current_length() {
       let current = this.$store.state.playedTime;
-      let sum = this.$store.state.currentSong.length;
+      let sum = 0;
+      if (this.$store.state.currentSong) {
+        sum = this.$store.state.currentSong.length;
+      }
       return current + "|" + sum;
     },
     progress() {
       let current = this.$store.state.playedTime;
-      let all = this.$store.state.currentSong.length;
+      let all = 0;
+      if (this.$store.state.currentSong) {
+        all = this.$store.state.currentSong.length;
+      }
       if (current >= all) {
         return 100;
       } else {
