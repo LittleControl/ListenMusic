@@ -10,12 +10,16 @@
     </div>
     <div class="lyric">
       <ul>
-        <li v-for="(item, index) in song.lyrics" :key="index">{{item.content}}</li>
+        <li
+          v-for="(item, index) in song.lyrics"
+          :key="index"
+          :class="{current_lyric: playedTime >= item.time && playedTime < item.next}"
+        >{{item.content}}</li>
       </ul>
     </div>
     <div class="progress-bar">
       <van-slider v-model="progress" bar-height="4px" active-color="#ee0a24" />
-      <div class="progress-num">{{current_length+'/'+song.time_length}}</div>
+      <div class="progress-num">{{current_length}}</div>
     </div>
   </div>
 </template>
@@ -48,19 +52,9 @@ export default {
       }
     },
     current_length() {
-      let origin = this.$store.state.playedTime;
-      function s2m(len) {
-        let m = parseInt(len / 60);
-        let s = len % 60;
-        if (s < 10) {
-          s = "0" + s;
-        }
-        if (m == 0) {
-          m = "00";
-        }
-        return m + ":" + s;
-      }
-      return s2m(origin);
+      let current = this.$store.state.playedTime;
+      let sum = this.$store.state.currentSong.length;
+      return current + "|" + sum;
     },
     progress() {
       let current = this.$store.state.playedTime;
@@ -70,6 +64,9 @@ export default {
       } else {
         return (current / all) * 100;
       }
+    },
+    playedTime() {
+      return this.$store.state.playedTime;
     }
   }
 };
@@ -100,6 +97,10 @@ export default {
     background-color: #bfa;
     ul {
       text-align: center;
+      .current_lyric {
+        font-weight: bold;
+        font-size: 26px;
+      }
     }
   }
   .progress-bar {
